@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+    <div>
+        <div style="width: 40%;margin: 0 auto">
+            <h2>
+                Escríbenos !!!
+            </h2>
+            <div class="resultado" style="color:green;font-style: italic">
+            </div>
+            <form id="formulario">
+                <div>
+                    <div style="display: flex;flex-direction: column;">
+                        <label>
+                            Nombre completo
+                        </label>
+                        <input id="nombre" type="text">
+                        <p class="errorNombre" style="color:red;font-style: italic;"></p>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <label>
+                            Asunto
+                        </label>
+                        <input id="asunto" type="text">
+                        <p class="errorAsunto" style="color:red;font-style: italic;"></p>
+                    </div>
+                </div>
+                <div style="display: flex;flex-direction: column;">
+                    <label>
+                        Mensaje
+                    </label>
+                    <textarea id="mensaje"></textarea>
+                    <p class="errorMensaje" style="color:red;font-style: italic;"></p>
+                </div>
+                <div>
+                    <button id="botton" type="submit">
+                        Envíar mensaje
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+    // Escríbe aquí tu código
+    let fomulario = document.getElementById("formulario");
+        fomulario.addEventListener("submit", function(event) {
+            event.preventDefault(); 
+
+            let nombre = document.getElementById("nombre").value;
+            let asunto = document.getElementById("asunto").value;
+            let mensaje = document.getElementById("mensaje").value;
+
+            let errorNombre = document.querySelector(".errorNombre");
+            let errorAsunto = document.querySelector(".errorAsunto");
+            let errorMensaje = document.querySelector(".errorMensaje");
+            let resultado = document.querySelector(".resultado");
+
+            let regex = /^[A-Za-z\s]+$/;
+
+            let valid = true;
+
+            // Validar nombre
+// Validar nombre
+            if (nombre == "") {
+                errorNombre.textContent = "El nombre es requerido.";
+                valid = false;
+            } else if (!regex.test(nombre)) {
+                errorNombre.textContent = "El nombre solo puede contener letras.";
+                valid = false;
+            } else {
+                errorNombre.textContent = "";
+            }
+
+            // Validar asunto
+            if (asunto == "") {
+                errorAsunto.textContent = "El asunto es requerido.";
+                valid = false;
+            } else if (!regex.test(asunto)) {
+                errorAsunto.textContent = "El asunto solo puede contener letras.";
+                valid = false;
+            } else {
+                errorAsunto.textContent = "";
+            }
+
+            // Validar mensaje
+            if (mensaje == "") {
+                errorMensaje.textContent = "El mensaje es requerido.";
+                valid = false;
+            } else if (!regex.test(mensaje)) {
+                errorMensaje.textContent = "El mensaje solo puede contener letras.";
+                valid = false;
+            } else {
+                errorMensaje.textContent = "";
+            }
+
+            // Mostrar mensaje de éxito o error
+            if (valid) {
+                resultado.textContent = "Formulario enviado con éxito.";
+                resultado.style.color = "green";
+            } else {
+                resultado.textContent = "Por favor, corrige los errores en el formulario.";
+                resultado.style.color = "red";
+            }
+        });
+    </script>
+</body>
+
+</html>

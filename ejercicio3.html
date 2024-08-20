@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <h2>
+                Resultado: <span class="resultado"></span>
+            </h2>
+            <div>
+                <div>
+                    <div>
+                        <label for="">Valor 1</label>
+                        <input id="valor1" type="text">
+                    </div>
+                    <div>
+                        <label for="">Valor 2</label>
+                        <input id="valor2" type="text">
+                    </div>
+                    <div style="display: flex">
+                        <button id="btn-sumar" type="button">
+                            Sumar
+                        </button>
+                        <button id="btn-restar" type="button">
+                            Restar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    // Escríbe aquí tu código
+    // Seleccionar los elementos de la página
+const valor1Input = document.getElementById('valor1');
+const valor2Input = document.getElementById('valor2');
+const resultadoSpan = document.querySelector('.resultado');
+const btnSumar = document.getElementById('btn-sumar');
+const btnRestar = document.getElementById('btn-restar');
+
+// Función para sumar
+function sumar() {
+    const valor1 = parseFloat(valor1Input.value) || 0; // Convertir el valor a número o 0 si está vacío
+    const valor2 = parseFloat(valor2Input.value) || 0;
+    const resultado = valor1 + valor2;
+    resultadoSpan.textContent = resultado; // Mostrar el resultado en el span
+}
+
+// Función para restar
+function restar() {
+    const valor1 = parseFloat(valor1Input.value) || 0;
+    const valor2 = parseFloat(valor2Input.value) || 0;
+    let resultado = valor1 - valor2;
+    if (resultado < 0) {
+        resultado = 0; // Si el resultado es negativo, mostrar 0
+    }
+    resultadoSpan.textContent = resultado;
+}
+
+// Añadir eventos a los botones
+btnSumar.addEventListener('click', sumar);
+btnRestar.addEventListener('click', restar);
+
+    </script>
+</body>
+
+</html>
